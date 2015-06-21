@@ -10,8 +10,8 @@ download.file(fileurl,destfile = "./exdata.zip",method="curl")
 ##unzipping file
 unzip("./exdata.zip",exdir = "./data")
 
-#Importing
+#Importing SCC PM25 file
 NEI <- readRDS("./data/summarySCC_PM25.rds")
 
-#Importing
+#Importing Source_Classification_Code.rds
 SCC <- readRDS("./data/Source_Classification_Code.rds")

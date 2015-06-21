@@ -1,5 +1,8 @@
 #Sourcing data
-#source("SourceData.R")
+source("SourceData.R")
+
+#Initiating necessary library
+library(dplyr)
 
 #limiting NEI data to Baltimore City
 NEI_Balt <- NEI[NEI$fips=="24510",]
@@ -14,5 +17,11 @@ NEI_SourceCar <- merge(SourceCar,NEI_Balt,by.x="SCC",by.y="SCC",all = FALSE)
 NEI_SourceCar <- group_by(NEI_SourceCar,year)
 NEI_Car_Sum <- summarise(NEI_SourceCar,Total_Emissions = sum(Emissions))
 
+#opening display device
+png(filename = "plot5.png")
+
 #plotting summarised data
 plot(NEI_Car_Sum$year,NEI_Car_Sum$Total_Emissions,xlab = "Year",ylab="Emissions (t)",main = "Baltimore City Motor Vehicle Emissions")
+
+#closing display device
+dev.off()
