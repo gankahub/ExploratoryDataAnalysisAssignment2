@@ -2,6 +2,7 @@
 #source("SourceData.R")
 
 #limiting dataset to 24510
+library(dplyr)
 NEI_Balt <- NEI[NEI$fips=="24510",]
 NEI_Balt_Grouped <- group_by(NEI_Balt,year)
 NEI_Balt_Summary <- summarise(NEI_Balt_Grouped,Total_Emissions = sum(Emissions))
